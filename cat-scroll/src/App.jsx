@@ -5,7 +5,6 @@ import Cart from "./components/Card";
 import List from "./components/List";
 
 function App() {
-
   const PAGE_NUMBER = 3;
 
   const [coinsData, setCoinsData] = useState([]);
@@ -14,9 +13,7 @@ function App() {
 
   useEffect(() => {
     setTimeout(async () => {
-      const response = await axios.get(
-        `https://aws.random.cat/meow`
-      );
+      const response = await axios.get(`https://aws.random.cat/meow`);
 
       setCoinsData((prev) => {
         return [...prev, response];
@@ -42,11 +39,13 @@ function App() {
   };
 
   return (
-    <section class="bg-white dark:bg-gray-900">
-      <div class="py-8 px-4 mx-auto max-w-screen-xl ">
-        <List catsData={coinsData}></List>
-      </div>
-    </section>
+    <div class="bg-white dark:bg-gray-900">
+      <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl ">
+          <List catsData={coinsData}></List>
+        </div>
+      </section>
+    </div>
   );
 }
 
