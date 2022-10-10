@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
-import Cart from "./components/Card";
 import List from "./components/List";
+import Loader from "./components/Loader";
 
 function App() {
   const PAGE_NUMBER = 3;
@@ -19,7 +19,7 @@ function App() {
         return [...prev, response];
       });
       setLoading(false);
-    }, 1000);
+    }, 1500);
   }, [page]);
 
   useEffect(() => {
@@ -44,6 +44,7 @@ function App() {
         <div class="py-8 px-4 mx-auto max-w-screen-xl ">
           <List catsData={coinsData}></List>
         </div>
+        {loading && <Loader/>}
       </section>
     </div>
   );
